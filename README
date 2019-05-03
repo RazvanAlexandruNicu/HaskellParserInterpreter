@@ -1,0 +1,54 @@
+======================== RAZVAN-ALEXANDRU NICU 323 CB==============================|
+========== IMPLEMENTAREA UNUI INTERPRETOR PENTRU UN LIMBAJ SIMPLIST ===============|
+                                                                                   |
+	Subpunctul a)                                                                    |
+        In implementarea subpunctului a am folosit tipul Map recomandat in cerinta |
+    , iar pentru cheie am ales un mod de a uniciza intrarile cu ajutorul unui tuplu|
+    format din InstrType(Var sau Func) si numarul curent de elemente din Map.      |
+        Functiile implementate si folosite de mine sunt detaliate in comentariile  |
+    din cod. Am implementat o functie de filter pe Mapa pentru a-mi extrage doar   |
+    elementele de tip Var sau Func, precum si o functie fold pe Map pentru a uni   |
+    intr-un singur String toate valorile obtinute in urma filtrarii                |
+                                                                                   |
+    Subpunctul b)                                                                  |
+       Pentru prima parte din acest subpunct am creat un Wrapper peste tipul Class-|
+    State, si anume un datatype care contine un nume, un parinte si un ClassState. |
+    Programul meu contine astfel o lista de variabile de tip Wrapper. Un program   |
+    gol va contine o lista ce contine doar variabila "Global" prezenta automat in  |
+    cadrul oricarui program.                                                       |
+       Pentru inceput am realizat parsarea inputului din fisier in Instructiuni,   |
+    reprezentate de liniile din input. Apoi, am realizat parsarea fiecarui tip de  |
+    instructiune in functie de tipul acesteia, numarul de parametri, etc.          |
+       Am definit si folosit functii pentru tokenizarea unui String cu un delimita-|
+    tor, precum si functii de tokenizare si extragere a anumitor valori dorit din  |
+    instructiune (numeleClasei pentru o variabila, parametrii unei functii etc)    |
+       Etapa de parsare am realizat-o cu ajutorul functiilor de tokenizare definite|
+    de catre mine.                                                                 |
+       Etapa de interpretare am realizat-o cu ajutorul mai multor functii definite |
+    de catre mine. Verific pentru inceput tipul instructiunii, iar in functie de   |
+    acesta  realizez operatiile necesare:                                          |
+    	- Pentru variabila verific daca clasa pe                                     |
+    care vreau sa o instantiez exista, iar in caz contrat nu aplic nicio modificare|
+    In cazul in care clasa exista, inserez in classState-ul clasei "Global" varia- |
+    bila.                                                                          |
+    	- Pentru clase verific daca este vorba de un input care contine cuvantul     |
+    cheie extends si verific existenta clasei extinse. In caz negativ, atribui pen-|
+    tru clasa curenta, clasa "Global" drept parinte. Apoi, inserez clasa nou creata|
+    in programul initial.                                                          |
+        - Pentru functii verific existenta Claselor ce definesc valoarea de retur, |
+    clasa a carei metoda este functia noastra, precum si parametrii, iar in caz    |
+    afirmativ introduc functia in clasa corespunzatoare.                           |
+                                                                                   |
+    Subpunctul c)                                                                  |
+       Pentru implementarea functiei de inferenta am folosit functii definite de   |
+    mine, precum functii ce verifica existenta unei clase, functii care compara    |
+    doua liste de tipuri diferite (Maybe String cu String).                        |
+       Pentru variabile verific existenta variabilei si a clasei careia ea apartine|
+    si returnez valoarea corespunzatoare.                                          |
+       Pentru functii verific existenta variabilei si a clasei careia ea apartine  |
+    si totodata extrag toate metodele cu numele dat care exista pe lantul de moste-|
+    niri pentru variabila data. Am implementat functii care verifica daca lista de |
+    parametri ai unei functii se potriveste cu lista de argumente ai lui (FCall),  |
+    iar in caz afirmativ returnez valoarea de return a functiei care 'unifica'     |
+===================================================================================|
+===================================================================================|
